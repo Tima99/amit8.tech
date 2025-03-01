@@ -247,6 +247,23 @@
                     opacity: 1;
                 }
             }
+
+            .download-button {
+                display: inline-block;
+                background: #007bff;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 1rem;
+                font-weight: bold;
+                text-decoration: none;
+                transition: background 0.3s ease;
+            }
+
+            .download-button:hover {
+                background: #0056b3;
+            }
+
         </style>
     </head>
     <body>
@@ -372,6 +389,13 @@
             </div>
         </section>
 
+        <section id="resume-download" style="text-align: center; margin-top: 30px;">
+        Well, since you've scrolled this far, why not take the next step? 😏
+            <a  id="resume-link" href="https://drive.google.com/uc?export=download&id=1SCsylQZgJ6FAbe_Js9LAcS0mTrvkids3" download class="download-button">
+                Click below to download my resume!
+            </a>
+        </section>
+        
         <section id="contact">
             <h2>Contact Me</h2>
 
@@ -449,6 +473,17 @@
                     toggleButton.textContent = "Ungroup Skills";
                 }
             });
+
+            document.getElementById("resume-link").addEventListener("click", function (event) {
+                event.preventDefault(); // Prevents multiple downloads
+
+                // Start the download
+                window.location.href = this.href;
+
+               // Change the content after download
+                this.outerHTML = `<p style="font-weight: bold; color: #007bff;">✅ Resume downloaded! For further details, contact me at the number provided in the resume.</p>`;
+            });
+
         </script>
 
         <!-- <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
